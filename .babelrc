@@ -1,0 +1,11 @@
+{
+    // "presets": ["react", "stage-0"]
+    "presets": ["@babel/env", "@babel/react"],
+    "plugins": [
+        [
+            "@babel/transform-runtime",
+            { "regenerator": true }
+        ],
+        "@babel/proposal-class-properties"
+    ]
+}

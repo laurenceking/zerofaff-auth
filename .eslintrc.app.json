@@ -1,0 +1,18 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": false,
+        "codeFrame": false
+    },
+    "env": {
+        "browser": true,
+        "jest": true
+    },
+    "rules": {
+        "max-len": ["error", {"code": 150}],
+        "prefer-promise-reject-errors": ["off"],
+        "react/jsx-filename-extension": ["off"],
+        "no-return-assign": ["off"]
+    }
+}

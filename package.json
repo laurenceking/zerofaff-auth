@@ -1,0 +1,98 @@
+{
+  "name": "zerofaff-auth",
+  "version": "1.0.0",
+  "description": "Authentication service",
+  "main": "server/auth.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:webpack",
+    "build:run": "npm run build && npm run start:server",
+    "build:webpack": "webpack --progress --colors --config ./webpack.config.js",
+    "clean": "rimraf public/assets",
+    "lint": "npm run lint:app && npm run lint:server",
+    "lint:app": "eslint \"app/**/*.js\" -c .eslintrc.app.json",
+    "lint:server": "eslint \"server/**/*.js\" -c .eslintrc.server.json",
+    "pretLint": "npm run prettier && npm run lint",
+    "prettier": "npm run prettier:app && npm run prettier:server",
+    "prettier:app": "prettier --write -l \"app/**/*.js\"",
+    "prettier:server": "prettier --write -l \"server/**/*.js\"",
+    "start": "SET BUILD_TYPE=dev & node server/auth.js --watch",
+    "start:server": "node server/auth.js",
+    "test": "jest --watchAll"
+  },
+  "author": "Laurence King",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.4.5",
+    "aphrodite": "^2.3.1",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "compression-webpack-plugin": "^3.1.0",
+    "css-loader": "^3.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "jest-fetch-mock": "^2.1.2",
+    "json-loader": "^0.5.7",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.0",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.39.1",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "nodemailer": "^6.3.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "winston": "^3.2.1"
+  },
+  "jest": {
+    "automock": false,
+    "globals": {
+      "__AUTH_URL__": "http://localhost:3002",
+      "__API_URL__": "http://localhost:4000"
+    },
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/app/__mocks__/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "./setup-jest.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  }
+}
